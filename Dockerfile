@@ -5,7 +5,7 @@ MAINTAINER lin2798003 development "lin2798003@sina.com"
 
 USER root
 
-ENV APP_NAME upn
+ENV APP_NAME apn
 ENV APP_PATH /var/www/html
 #ENV APP_MONITOR_HOOK DINGTALK-HOOK
 
