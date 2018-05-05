@@ -21,9 +21,8 @@ RUN cp /etc/apk/repositories /etc/apk/repositories.bak && \
     echo "http://mirrors.aliyun.com/alpine/v3.7/main/" > /etc/apk/repositories && \
     apk update
 
-RUN apk add --no-cache bash \
+RUN apk add --no-cache \
     wget \
-    supervisor \
     curl \
     libcurl \
     python \
@@ -79,9 +78,6 @@ RUN apk add rabbitmq-c-dev \
 
 # extensions install
 RUN pecl install redis && \
-    pecl install xdebug && \
-    echo '[xdebug]' >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini && \
-    echo 'extension=xdebug.so' >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini && \
     echo 'opcache.validate_timestamps=0' >> /usr/local/etc/php/conf.d/docker-php-ext-opcache.ini && \
     echo 'opcache.enable=1' >> /usr/local/etc/php/conf.d/docker-php-ext-opcache.ini && \
     echo 'opcache.enable_cli=1' >> /usr/local/etc/php/conf.d/docker-php-ext-opcache.ini && \
