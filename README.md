@@ -1,5 +1,5 @@
 # apn
-[![Latest Stable Version](https://poser.pugx.org/cube-group/base-image-apn/version)](https://hub.docker.com/r/lin2798003/apn/)
+<a href="https://hub.docker.com/r/lin2798003/apn/">docker hub</a>
 
 用途：php项目进行自动化crontab任务
 ### linux
