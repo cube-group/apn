@@ -1,4 +1,4 @@
-## apn
+  ## apn
 用途：php项目进行自动化crontab任务
 ### linux
 alpine:3.7
@@ -68,3 +68,6 @@ Zend OPcache
 ### cron支持
 项目根目录(即/var/www/html目录)包含cron.json
 ### 环境变量支持
+* APP_NAME 项目名称
+* APP_PATH 项目目录（默认为/var/www/html)
+* APP_MONITOR_HOOK 钉钉报警机器人地址（默认为空）
