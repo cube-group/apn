@@ -65,5 +65,30 @@ Zend OPcache
 ### opcache
 自动开启且不进行定时检测
 ### cron支持
-项目根目录(即/var/www/html目录)包含cron.json
-### 环境变量支持
+项目根目录(即/var/www/html目录)包含cron.json格式如下:
+```
+[
+  {
+    "time": "* * * * * *",
+    "value": "echo hello"
+  },
+  {
+    "time": "* * * * * *",
+    "value": "echo cron-local"
+  },
+  {
+    "time": "* * * * * *",
+    "value": "asdfadf"
+  }
+]
+```
+
+## 环境变量:PHP参数相关
+* PHP_MEM_LIMIT: php进程内存限制,默认512M
+* PHP_POST_MAX_SIZE: php post最大字节 默认100M
+* PHP_UPLOAD_MAX_FILESIZE: php最大文件上传限制 默认100M
+
+## 特殊环境变量
+* APP_NAME: app名称
+* APP_PATH: 项目所在目录(默认为:/var/www/html)
+* APP_MONITOR_HOOK: app报警钉钉群机器人webhook
