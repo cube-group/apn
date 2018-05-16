@@ -87,7 +87,6 @@ function MySchedule(data) {
             execInstance = new exec.Shell();
             execInstance.exec(data.value, function (err, result) {
                 executeStatus(false);
-                console.log(data.value);
                 if (err) {
                     errorCount++;
                     sendMail(result);
@@ -172,7 +171,7 @@ function MySchedule(data) {
     try {
         job = nodeCron.schedule(data.time, scheduleExec, true);
     } catch (e) {
-        trace.error(`[schedule error] ${e.message}`);
+        console.log(`[schedule error] ${e.message}`);
         this.stop();
     }
 }

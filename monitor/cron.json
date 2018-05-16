@@ -1,14 +1,13 @@
-[
-  {
-    "time": "* * * * * *",
-    "value": "echo hello"
-  },
-  {
-    "time": "* * * * * *",
-    "value": "echo cron-local"
-  },
-  {
-    "time": "* * * * * *",
-    "value": "asdfadf"
-  }
-]
+{
+  "hook": "",
+  "jobs": [
+    {
+      "time": "* * * * * *",
+      "value": "echo hello"
+    },
+    {
+      "time": "*/10 * * * * *",
+      "value": "asdfadf"
+    }
+  ]
+}

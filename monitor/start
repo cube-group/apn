@@ -9,7 +9,7 @@ let inter = setInterval(() => {
     console.log('check cron.json');
 
     let appPath = process.env.APP_PATH;
-    // let appPath = __dirname;
+    appPath = __dirname;
     if (!appPath) {
         return;
     }
@@ -19,11 +19,9 @@ let inter = setInterval(() => {
     }
     let content = fs.readFileSync(cronFile);
     if (content) {
-        console.log('checked');
-        clearInterval(inter);
         exec(content);
     }
-}, 3000);
+}, 15000);
 
 
 function exec(json) {
@@ -35,6 +33,13 @@ function exec(json) {
         process.exit('json parse error');
     }
 
-    let server = require('./service/task/server');
-    server.start(data);
+    if (data.hook) {
+        config.webhook = data.hook;
+    }
+
+    if (data.jobs) {
+        console.log('checked', data);
+        clearInterval(inter);
+        require('./service/task/server').start(data.jobs);
+    }
 }
