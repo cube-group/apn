@@ -1,5 +1,5 @@
 # apn
-<a href="https://hub.docker.com/r/lin2798003/apn/">docker hub</a>
+docker hub地址: https://hub.docker.com/r/lin2798003/apn
 
 用途：php项目进行自动化crontab任务
 ### linux
@@ -68,23 +68,21 @@ Zend OPcache
 ### opcache
 自动开启且不进行定时检测
 ### cron支持
-<<<<<<< HEAD
 项目根目录(即/var/www/html目录)包含cron.json格式如下:
-```
-[
-  {
-    "time": "* * * * * *",
-    "value": "echo hello"
-  },
-  {
-    "time": "* * * * * *",
-    "value": "echo cron-local"
-  },
-  {
-    "time": "* * * * * *",
-    "value": "asdfadf"
-  }
-]
+```json
+{
+  "hook": "",
+  "jobs": [
+    {
+      "time": "* * * * * *",
+      "value": "echo hello"
+    },
+    {
+      "time": "*/10 * * * * *",
+      "value": "php $APP_PATH/think module/controller/action"
+    }
+  ]
+}
 ```
 
 ## 环境变量:PHP参数相关

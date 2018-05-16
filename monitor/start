@@ -9,7 +9,7 @@ let inter = setInterval(() => {
     console.log('check cron.json');
 
     let appPath = process.env.APP_PATH;
-    appPath = __dirname;
+    // appPath = __dirname;
     if (!appPath) {
         return;
     }
