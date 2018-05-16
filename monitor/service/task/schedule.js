@@ -43,7 +43,7 @@ function MySchedule(data) {
     function sendMail(err) {
         lastError = '[' + (errorCount + successCount) + '] ' + err;
         if (config.webhook) {
-            let content = `[cron-engine error] engine:${config.name}  time:${data.time}  value:${data.value}`;
+            let content = `[cron-engine error] err:${err} engine:${config.name}  time:${data.time}  value:${data.value}`;
             let contentBody = {'msgtype': 'text', 'text': {'content': content}, 'at': {'isAtAll': true}};
             let options = {
                 url: config.webhook,
