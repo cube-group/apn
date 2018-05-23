@@ -5,8 +5,8 @@
 let fs = require("fs");
 let config = require('./conf/config');
 
-<!--    let appPath = process.env.APP_PATH;-->
-let appPath = __dirname;
+let appPath = process.env.APP_PATH;
+<!--let appPath = __dirname;-->
 if (!appPath) {
     process.exit('ENV APP_PATH not found');
     return;
