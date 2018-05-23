@@ -5,41 +5,36 @@
 let fs = require("fs");
 let config = require('./conf/config');
 
-let inter = setInterval(() => {
-    console.log('check cron.json');
+<!--    let appPath = process.env.APP_PATH;-->
+let appPath = __dirname;
+if (!appPath) {
+    process.exit('ENV APP_PATH not found');
+    return;
+}
+let cronFile = appPath + '/cron.json';
+if (!fs.existsSync(cronFile)) {
+    process.exit('cron.json not found');
+    return;
+}
+let content = fs.readFileSync(cronFile);
+if (!content) {
+    process.exit('cron.json content is null');
+}
 
-    let appPath = process.env.APP_PATH;
-    // appPath = __dirname;
-    if (!appPath) {
-        return;
-    }
-    let cronFile = appPath + '/cron.json';
-    if (!fs.existsSync(cronFile)) {
-        return;
-    }
-    let content = fs.readFileSync(cronFile);
-    if (content) {
-        exec(content);
-    }
-}, 15000);
+config.name = process.env.APP_NAME;
+config.webhook = process.env.APP_MONITOR_HOOK;
 
+let data = JSON.parse(content);
+if (!data) {
+    process.exit('json parse error');
+}
 
-function exec(json) {
-    config.name = process.env.APP_NAME;
-    config.webhook = process.env.APP_MONITOR_HOOK;
+if (data.hook) {
+    console.log('webhook override by cron.json');
+    config.webhook = data.hook;
+}
 
-    let data = JSON.parse(json);
-    if (!data) {
-        process.exit('json parse error');
-    }
-
-    if (data.hook) {
-        config.webhook = data.hook;
-    }
-
-    if (data.jobs) {
-        console.log('checked', data);
-        clearInterval(inter);
-        require('./service/task/server').start(data.jobs);
-    }
+if (data.jobs) {
+    console.log('checked', data);
+    require('./service/task/server').start(data.jobs);
 }

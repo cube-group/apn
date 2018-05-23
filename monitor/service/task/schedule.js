@@ -42,20 +42,8 @@ function MySchedule(data) {
      */
     function sendMail(err) {
         lastError = '[' + (errorCount + successCount) + '] ' + err;
-        if (config.webhook) {
-            let content = `[cron-engine error] err:${err} engine:${config.name}  time:${data.time}  value:${data.value}`;
-            let contentBody = {'msgtype': 'text', 'text': {'content': content}, 'at': {'isAtAll': true}};
-            let options = {
-                url: config.webhook,
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},//headers array
-                body: JSON.stringify(contentBody),//method为post时的body
-                timeout: 2000,//超时时间(单位:秒),<=0时不计算超时
-            };
-            curl.send(options, function (err) {
-                console.log(err ? err.message : null);
-            });
-        }
+        let content = `[cron-engine error] err:${err} engine:${config.name}  time:${data.time}  value:${data.value}`;
+        curl.error(content);
     }
 
 

@@ -3,7 +3,7 @@
  */
 let c = {
     'name': null,
-    'webhook': null,
+    'webhook': null
 };
 
 module.exports = c;
