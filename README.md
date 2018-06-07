@@ -94,3 +94,10 @@ Zend OPcache
 * APP_NAME: app名称
 * APP_PATH: 项目所在目录(默认为:/var/www/html)
 * APP_MONITOR_HOOK: app报警钉钉群机器人webhook
+
+## 特殊入口脚本支持
+Dockerfile中追加<br>
+```Dockerfile
+RUN echo -e "your scripts" >> /extra/external.sh
+```
+注意:your scripts脚本一定都需要是在系统后台运行的比如nohup sh xxx &

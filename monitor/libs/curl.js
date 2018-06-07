@@ -10,7 +10,7 @@ let config = require('../conf/config');
  */
 exports.error = function (msg) {
     if (config.webhook) {
-        let content = `${msg}`;
+        let content = `app:${process.env.APP_NAME}\ncontent:${msg}`;
         let contentBody = {'msgtype': 'text', 'text': {'content': content}, 'at': {'isAtAll': true}};
         let options = {
             url: config.webhook,

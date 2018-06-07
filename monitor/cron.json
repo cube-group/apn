@@ -7,7 +7,7 @@
     },
     {
       "time": "*/10 * * * * *",
-      "value": "asdfadf"
+      "value": "php $APP_PATH/a.php"
     }
   ]
 }
