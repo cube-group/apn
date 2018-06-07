@@ -20,7 +20,3 @@ sh /extra/external.sh
 
 #启动node脚本
 node /extra/monitor/start
-
-
-
-
