@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Increase the memory_limit
 if [ ! -z "$PHP_MEM_LIMIT" ]; then
