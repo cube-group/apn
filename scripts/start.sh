@@ -19,10 +19,7 @@ fi
 touch /cli.log
 
 #extra third shell start
-bash /extra/external.sh
-
-#启动node脚本
-node /extra/monitor/start >> /cli.log &
+sh /extra/external.sh
 
 #跟踪日志
 tail -f /cli.log
