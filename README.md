@@ -1,7 +1,10 @@
 # apn
 docker hub地址: https://hub.docker.com/r/lin2798003/apn
 
-用途：php项目进行自动化crontab任务
+用途：
+* 项目进行自动化crontab任务
+* 项目进行持久化脚本
+
 ### linux
 alpine:3.7
 ### php7
@@ -98,6 +101,6 @@ Zend OPcache
 ## 特殊入口脚本支持
 Dockerfile中追加<br>
 ```Dockerfile
-RUN echo -e "your scripts" >> /extra/external.sh
+RUN echo "php a/b/c >> /cli.log &" >> /extra/external.sh
 ```
-注意:your scripts脚本一定都需要是在系统后台运行的比如nohup sh xxx &
+注意:脚本一定都需要是在系统后台运行

@@ -1,3 +1,3 @@
 #!/bin/bash
 
-echo "external.sh"
+# echo "php a/b/c >> /cli.log &" >> /extra/external.sh

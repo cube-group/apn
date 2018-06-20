@@ -15,8 +15,14 @@ if [ ! -z "$PHP_UPLOAD_MAX_FILESIZE" ]; then
  echo "upload_max_filesize = ${PHP_UPLOAD_MAX_FILESIZE}" >> /usr/local/etc/php/conf.d/docker-php.ini
 fi
 
+#create cli.log
+touch /cli.log
+
 #extra third shell start
-sh /extra/external.sh
+bash /extra/external.sh
 
 #启动node脚本
-node /extra/monitor/start
+node /extra/monitor/start >> /cli.log &
+
+#跟踪日志
+tail -f /cli.log

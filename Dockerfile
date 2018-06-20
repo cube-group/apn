@@ -115,6 +115,6 @@ RUN apk del \
 COPY ./scripts/ /extra/
 COPY ./monitor/ /extra/monitor/
 
-WORKDIR /var/www/html
+WORKDIR ${APP_PATH}
 
-CMD ["sh","/extra/start.sh"]
+CMD ["bash","/extra/start.sh"]
