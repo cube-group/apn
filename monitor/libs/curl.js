@@ -20,7 +20,9 @@ exports.error = function (msg) {
             timeout: 2000//超时时间(单位:秒),<=0时不计算超时
         };
         this.send(options, function (err) {
-            console.log('dingding send err:', err ? err.message : null, "\n");
+            if(err){
+                console.log('ding ding send err:', err ? err.message : null, "\n");
+            }
         });
     }
 };
