@@ -1,5 +1,5 @@
 {
-  "hook": "https://oapi.dingtalk.com/robot/send?access_token=7feb7a1d1986c4c9f8090782122df373dd03b2b76f0641103b30432030a9d754",
+  "hook": "https://oapi.dingtalk.com/robot/send?access_token=86a6a6c2f0fde8811412b39739bed47155e88982ac6ddc203ddc43e9cb920287",
   "jobs": [
     {
       "time": "* * * * * *",

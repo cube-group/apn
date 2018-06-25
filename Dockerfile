@@ -19,7 +19,7 @@ ENV PHP_UPLOAD_MAX_FILESIZE 100M
 # 修改为国内镜像源
 RUN cp /etc/apk/repositories /etc/apk/repositories.bak && \
     echo "http://mirrors.aliyun.com/alpine/v3.7/main/" > /etc/apk/repositories && \
-    apk update &&\
+    apk update && \
     apk add --no-cache \
     wget \
     curl \

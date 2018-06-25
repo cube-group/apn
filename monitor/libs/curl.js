@@ -20,7 +20,7 @@ exports.error = function (msg) {
             timeout: 2000//超时时间(单位:秒),<=0时不计算超时
         };
         this.send(options, function (err) {
-            console.log('dingding send err:', err ? err.message : null);
+            console.log('dingding send err:', err ? err.message : null, "\n");
         });
     }
 };
@@ -35,7 +35,7 @@ exports.send = function (args, callback) {
         if (err) {
             callback(err, err);
         } else if (res.statusCode != 200) {
-            callback('err', res.statusCode);
+            callback('err', {'message': body, 'code': res.statusCode});
         } else {
             callback(null, body);
         }
