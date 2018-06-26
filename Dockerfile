@@ -105,4 +105,4 @@ COPY ./monitor/ /extra/monitor/
 
 WORKDIR ${APP_PATH}
 
-CMD ["sh","/extra/start.sh"]
+CMD ["bash","/extra/start.sh"]
