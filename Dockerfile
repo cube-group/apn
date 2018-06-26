@@ -21,6 +21,7 @@ RUN cp /etc/apk/repositories /etc/apk/repositories.bak && \
     echo "http://mirrors.aliyun.com/alpine/v3.7/main/" > /etc/apk/repositories && \
     apk update && \
     apk add --no-cache \
+    bash \
     wget \
     curl \
     libcurl \

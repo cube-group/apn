@@ -20,7 +20,7 @@ fi
 touch /cli.log
 
 #extra third shell start
-sh /extra/external.sh
+bash /extra/external.sh
 
 #跟踪日志
 tail -f /cli.log
