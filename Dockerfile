@@ -21,6 +21,7 @@ RUN cp /etc/apk/repositories /etc/apk/repositories.bak && \
     echo "http://mirrors.aliyun.com/alpine/v3.7/main/" > /etc/apk/repositories && \
     apk update && \
     apk add --no-cache \
+    tzdata \
     bash \
     wget \
     curl \
@@ -97,7 +98,7 @@ RUN cp /etc/apk/repositories /etc/apk/repositories.bak && \
 
 #设置时区
 RUN /bin/cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
-  && echo 'Asia/Shanghai' >/etc/timezone \
+  && echo 'Asia/Shanghai' >/etc/timezone
 
 COPY ./scripts/ /extra/
 COPY ./monitor/ /extra/monitor/
