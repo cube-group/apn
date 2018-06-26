@@ -22,7 +22,6 @@ RUN cp /etc/apk/repositories /etc/apk/repositories.bak && \
     apk update && \
     apk add --no-cache \
     tzdata \
-    bash \
     wget \
     curl \
     libcurl \
@@ -97,8 +96,9 @@ RUN cp /etc/apk/repositories /etc/apk/repositories.bak && \
     re2c
 
 #设置时区
-RUN /bin/cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
-  && echo 'Asia/Shanghai' >/etc/timezone
+RUN apk add bash \
+    && /bin/cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
+    && echo 'Asia/Shanghai' >/etc/timezone
 
 COPY ./scripts/ /extra/
 COPY ./monitor/ /extra/monitor/
