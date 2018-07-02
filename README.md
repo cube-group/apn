@@ -72,6 +72,7 @@ Zend OPcache
 自动开启且不进行定时检测
 ### cron支持
 项目根目录(即/var/www/html目录)包含cron.json格式如下:
+可以支持到秒级也可以使用分钟级别
 ```json
 {
   "hook": "",
