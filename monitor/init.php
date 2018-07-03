@@ -13,12 +13,12 @@ use Myaf\Utils\FileUtil;
 require __DIR__ . '/vendor/autoload.php';
 
 /**
- * 初始化脚本监控
+ * 初始化
  * Class InitMonitor
  */
 class InitMonitor
 {
-    private $appName = 'apn';
+    private $appName = 'apc';
     private $ding = '';
 
     /**
@@ -51,7 +51,7 @@ class InitMonitor
         exec("{$appInitShell} >> /init-shell.out 2>> /init-shell.err");
         $out = system("cat /init-shell.out && true > /init-shell.out");
         $err = system("cat /init-shell.err && true > /init-shell.err");
-        $this->sendDing("[INIT-SHELL]\n{$appInitShell}\n{$out}\n{$err}");
+        $this->sendDing("[INIT-SHELL]\n{$appInitShell}\n[OUT]\n{$out}\n[ERR]\n{$err}");
     }
 
     /**
@@ -60,6 +60,7 @@ class InitMonitor
      */
     private function serverIp()
     {
+//        return $_SERVER['REMOTE_ADDR'] . '-' . gethostbyname(exec('hostname'));
         return gethostbyname(exec('hostname'));
     }
 
