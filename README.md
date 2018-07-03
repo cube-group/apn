@@ -10,7 +10,8 @@ alpine:3.7
 ### php7
 php:7.2
 ### nodejs
-node:6*
+nodejs:8.9+
+
 ### php扩展支持
 ```
 [PHP Modules]
@@ -72,36 +73,31 @@ Zend OPcache
 自动开启且不进行定时检测
 ### cron支持
 项目根目录(即/var/www/html目录)包含cron.json格式如下:
-可以支持到秒级也可以使用分钟级别
 ```json
 {
   "hook": "",
+  "post": 0,
   "jobs": [
     {
-      "time": "* * * * * *",
+      "time": "* * * * *",
       "value": "echo hello"
     },
     {
-      "time": "*/10 * * * * *",
+      "time": "*/10 * * * *",
       "value": "php $APP_PATH/think module/controller/action"
     }
   ]
 }
 ```
+说明:
+* hook: 钉钉群报警机器人url,如果为空或者不写则默认使用环境变量$APP_MONITOR_HOOK进行发送
+* post: 标准输出日志是否进行钉钉收集,1为收集,默认为不收集
+* time: 标准crontab格式(分 时 日 月 周)
+* value: 标准shell脚本
 
-## 环境变量:PHP参数相关
-* PHP_MEM_LIMIT: php进程内存限制,默认512M
-* PHP_POST_MAX_SIZE: php post最大字节 默认100M
-* PHP_UPLOAD_MAX_FILESIZE: php最大文件上传限制 默认100M
-
-## 特殊环境变量
+## 环境变量
 * APP_NAME: app名称
 * APP_PATH: 项目所在目录(默认为:/var/www/html)
 * APP_MONITOR_HOOK: app报警钉钉群机器人webhook
-
-## 特殊入口脚本支持
-Dockerfile中追加<br>
-```Dockerfile
-RUN echo "php a/b/c >> /cli.log &" >> /extra/external.sh
-```
-注意:脚本一定都需要是在系统后台运行
+* APP_INIT_SHELL: 初始化执行脚本,如:php \$APP_PATH/a.php
+* PHP_MEM_LIMIT: php进程内存限制,默认512M
