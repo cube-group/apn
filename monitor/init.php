@@ -13,12 +13,12 @@ use Myaf\Utils\FileUtil;
 require __DIR__ . '/vendor/autoload.php';
 
 /**
- * 初始化
+ * 初始化脚本监控
  * Class InitMonitor
  */
 class InitMonitor
 {
-    private $appName = 'apc';
+    private $appName = 'apn';
     private $ding = '';
 
     /**
@@ -67,7 +67,7 @@ class InitMonitor
     {
         if ($this->ding) {
             $d = new LDing($this->ding);
-            $d->send("[{$this->appName}][{$this->serverIp()}] {$msg}");
+            $d->send("[INIT-APN]\n[{$this->appName}]\n[{$this->serverIp()}]\n {$msg}");
         }
     }
 }
